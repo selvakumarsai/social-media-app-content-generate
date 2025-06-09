@@ -8,7 +8,7 @@ from langchain_openai import ChatOpenAI
 st.set_page_config(page_title="Blog Post Generator", page_icon="✍️")
 
 st.title("✍️ Blog Post Generator")
-st.markdown("This tool uses a team of AI agents to research, write, and edit a blog post on any topic. Enter your API keys and a topic to begin.")
+st.markdown("This tool uses a team of AI agents to research, write, and edit a blog post on any topic.")
 
 # --- Streamlit UI ---
 with st.sidebar:
