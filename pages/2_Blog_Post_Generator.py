@@ -25,7 +25,7 @@ if st.button("Generate Blog Post"):
         serper_api_key = st.secrets["serper_api_key"]
         os.environ['SERPER_API_KEY'] = serper_api_key
         llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=openai_api_key)
-        search_tool = SerperDevTool()
+        serper_tool_top5 = SerperDevTool(k=5)
         scrape_tool = ScrapeWebsiteTool()
 
         with st.spinner("AI agents are crafting your blog post... This may take a moment."):
@@ -34,7 +34,7 @@ if st.button("Generate Blog Post"):
                 role="Content Planner",
                 goal=f"Plan engaging content on {topic}",
                 backstory=f"You are a content planner focused on {topic}. You gather information to inform the audience. Your plan guides the writer.",
-                tools=[search_tool, scrape_tool],
+                tools=[serper_tool_top5, scrape_tool],
                 allow_delegation=False,
                 verbose=True,
                 llm=llm
@@ -44,7 +44,7 @@ if st.button("Generate Blog Post"):
                 role="Content Writer",
                 goal=f"Write an opinion piece about {topic}",
                 backstory=f"You are a writer creating an opinion piece on {topic}, based on the content plan. You aim for insightful and balanced writing, distinguishing opinions from facts.",
-                tools=[search_tool, scrape_tool],
+                tools=[serper_tool_top5, scrape_tool],
                 allow_delegation=False,
                 verbose=True,
                 llm=llm
@@ -71,23 +71,22 @@ if st.button("Generate Blog Post"):
                 agent=planner,
             )
 
-            write_task = Task(
+           write = Task(
                 description=(
-                    f"1. Draft a blog post on {topic} using the content plan."
-                    "2. Incorporate SEO keywords."
-                    "3. Use engaging titles and structure: intro, body, conclusion."
-                    "4. Proofread for errors and brand voice."
+                    "Draft a blog post on {topic} using the content plan." # Simplified
+                    "Incorporate SEO keywords."
+                    "Use engaging titles and structure: intro, body, conclusion." # Simplified structure
+                    "Proofread for errors and brand voice."
                 ),
-                expected_output="A well-written blog post in markdown (under 400 words), ready for publication, with distinct sections.",
+                expected_output="A well-written blog post in markdown (under 400 words), "
+                    "ready for publication, with distinct sections (e.g., one paragraph per section).", # Simplified section description
                 agent=writer,
-                context=[plan_task]
-            )
+           )
 
             edit_task = Task(
                 description="Proofread the blog post for grammar, style, and brand voice.",
                 expected_output="A final, proofread blog post in markdown format, ready for publication.",
                 agent=editor,
-                context=[write_task]
             )
 
             # --- Crew ---
