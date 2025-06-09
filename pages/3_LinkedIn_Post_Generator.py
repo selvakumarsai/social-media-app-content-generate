@@ -12,20 +12,17 @@ st.markdown("This tool uses AI agents to craft a professional LinkedIn post on a
 
 # --- Streamlit UI ---
 with st.sidebar:
-    openai_api_key = st.text_input("Enter OpenAI API Key:", type="password", key="openai_key_linkedin")
-    serper_api_key = st.text_input("Enter Serper API Key:", type="password", key="serper_key_linkedin")
-    st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
-    st.markdown("[Get a Serper API key](https://serper.dev/api-key)")
+   
 
 topic = st.text_input("Enter the topic for your LinkedIn post:", placeholder="e.g., The rise of Multi-Agent AI Frameworks")
 
 if st.button("Generate LinkedIn Post"):
-    if not openai_api_key or not serper_api_key:
-        st.error("Please enter both your OpenAI and Serper API keys to proceed.")
-    elif not topic:
+    if not topic:
         st.error("Please enter a topic for the post.")
     else:
+        openai_api_key = st.secrets["openai_api_key"]
         os.environ['OPENAI_API_KEY'] = openai_api_key
+        serper_api_key = st.secrets["serper_api_key"]
         os.environ['SERPER_API_KEY'] = serper_api_key
         llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, api_key=openai_api_key)
         search_tool = SerperDevTool()
