@@ -8,7 +8,7 @@ from langchain_openai import ChatOpenAI
 st.set_page_config(page_title="LinkedIn Post Generator", page_icon="🔗")
 
 st.title("🔗 LinkedIn Post Generator")
-st.markdown("This tool uses AI agents to craft a professional LinkedIn post on any topic. Provide your API keys and a topic to get started.")
+st.markdown("This tool uses AI agents to craft a professional LinkedIn post on any topic.")
 
 # --- Streamlit UI ---
 with st.sidebar:
