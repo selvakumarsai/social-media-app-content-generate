@@ -12,20 +12,17 @@ st.markdown("This tool uses a team of AI agents to research, write, and edit a b
 
 # --- Streamlit UI ---
 with st.sidebar:
-    openai_api_key = st.text_input("Enter OpenAI API Key:", type="password", key="openai_key_blog")
-    serper_api_key = st.text_input("Enter Serper API Key:", type="password", key="serper_key_blog")
-    st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
-    st.markdown("[Get a Serper API key](https://serper.dev/api-key)")
+    
 
 topic = st.text_input("Enter the topic for your blog post:", placeholder="e.g., The Future of Artificial Intelligence")
 
 if st.button("Generate Blog Post"):
-    if not openai_api_key or not serper_api_key:
-        st.error("Please enter both your OpenAI and Serper API keys to proceed.")
-    elif not topic:
+    if not topic:
         st.error("Please enter a topic for the blog post.")
     else:
+        openai_api_key = st.secrets["openai_api_key"]
         os.environ['OPENAI_API_KEY'] = openai_api_key
+        serper_api_key = st.secrets["serper_api_key"]
         os.environ['SERPER_API_KEY'] = serper_api_key
         llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=openai_api_key)
         search_tool = SerperDevTool()
