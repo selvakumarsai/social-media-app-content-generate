@@ -12,7 +12,7 @@ st.markdown("This tool uses a team of AI agents to research, write, and edit a b
 
 # --- Streamlit UI ---
 with st.sidebar:
-    st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
+    st.markdown("This tool uses a team of AI agents to research, write, and edit a blog post on any topic")
 
 topic = st.text_input("Enter the topic for your blog post:", placeholder="e.g., The Future of Artificial Intelligence")
 
