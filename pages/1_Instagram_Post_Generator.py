@@ -38,7 +38,7 @@ def generate_image(query: str) -> str:
 
 # --- Streamlit UI ---
 with st.sidebar:
-    st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
+    st.markdown("This tool uses AI agents to generate a caption and an image for an Instagram post")
 
 theme = st.text_input("Enter the theme for your Instagram post:", placeholder="e.g., Summer vacation in the Maldives")
 
