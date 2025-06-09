@@ -12,7 +12,7 @@ st.markdown("This tool uses AI agents to generate a tweet on any topic. Enter yo
 
 # --- Streamlit UI ---
 with st.sidebar:
-    st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
+    st.markdown("This tool uses AI agents to generate a tweet on any topic")
    
 topic = st.text_input("Enter the topic for your tweet:", placeholder="e.g., The latest news on electric cars")
 
