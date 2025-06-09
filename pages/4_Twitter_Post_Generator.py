@@ -8,7 +8,7 @@ from langchain_openai import ChatOpenAI
 st.set_page_config(page_title="Twitter Post Generator", page_icon="🐦")
 
 st.title("🐦 Twitter Post Generator")
-st.markdown("This tool uses AI agents to generate a tweet on any topic. Enter your API keys and a topic to get started.")
+st.markdown("This tool uses AI agents to generate a tweet on any topic.")
 
 # --- Streamlit UI ---
 with st.sidebar:
