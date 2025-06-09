@@ -38,17 +38,15 @@ def generate_image(query: str) -> str:
 
 # --- Streamlit UI ---
 with st.sidebar:
-    openai_api_key = st.text_input("Enter OpenAI API Key:", type="password", key="openai_key_insta")
     st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
 
 theme = st.text_input("Enter the theme for your Instagram post:", placeholder="e.g., Summer vacation in the Maldives")
 
 if st.button("Generate Instagram Post"):
-    if not openai_api_key:
-        st.error("Please enter your OpenAI API key to proceed.")
-    elif not theme:
+    if not theme:
         st.error("Please enter a theme for the post.")
     else:
+        openai_api_key = st.secrets["openai_api_key"]
         os.environ['OPENAI_API_KEY'] = openai_api_key
         llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=openai_api_key)
 
