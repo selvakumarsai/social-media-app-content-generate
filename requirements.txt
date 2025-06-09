@@ -6,3 +6,5 @@ numpy==1.25.2
 openai
 langchain-openai
 requests
+pysqlite3-binary
+chromadb
