@@ -12,7 +12,7 @@ st.markdown("This tool uses AI agents to craft a professional LinkedIn post on a
 
 # --- Streamlit UI ---
 with st.sidebar:
-    st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
+    st.markdown("This tool uses AI agents to craft a professional LinkedIn post on any topic")
 
 topic = st.text_input("Enter the topic for your LinkedIn post:", placeholder="e.g., The rise of Multi-Agent AI Frameworks")
 
