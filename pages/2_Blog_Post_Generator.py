@@ -71,7 +71,7 @@ if st.button("Generate Blog Post"):
                 agent=planner,
             )
 
-           write = Task(
+            write_task = Task(
                 description=(
                     "Draft a blog post on {topic} using the content plan." # Simplified
                     "Incorporate SEO keywords."
@@ -81,7 +81,7 @@ if st.button("Generate Blog Post"):
                 expected_output="A well-written blog post in markdown (under 400 words), "
                     "ready for publication, with distinct sections (e.g., one paragraph per section).", # Simplified section description
                 agent=writer,
-           )
+            )
 
             edit_task = Task(
                 description="Proofread the blog post for grammar, style, and brand voice.",
