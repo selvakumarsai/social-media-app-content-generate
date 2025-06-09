@@ -24,9 +24,8 @@ Use the navigation panel on the left to select a content generator:
 **How to get started?**
 
 1.  Select a generator from the sidebar.
-2.  Enter the required API keys (OpenAI and/or Serper). Your keys are not stored.
-3.  Provide a topic or theme.
-4.  Click the "Generate" button and watch the AI agents work their magic!
+2.  Provide a topic or theme.
+3.  Click the "Generate" button and watch the AI agents work their magic!
 
 This tool is designed to streamline your content creation process, making it faster and more efficient. Let's get started!
 """)
