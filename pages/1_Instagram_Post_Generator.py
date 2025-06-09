@@ -9,7 +9,7 @@ from langchain_openai import ChatOpenAI
 st.set_page_config(page_title="Instagram Post Generator", page_icon="📸")
 
 st.title("📸 Instagram Post Generator")
-st.markdown("This tool uses AI agents to generate a caption and an image for an Instagram post. Enter a theme and your API key to get started.")
+st.markdown("This tool uses AI agents to generate a caption and an image for an Instagram post.")
 
 # --- Tool Definition ---
 @tool
