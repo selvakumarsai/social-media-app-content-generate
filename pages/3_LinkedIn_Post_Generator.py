@@ -25,7 +25,7 @@ if st.button("Generate LinkedIn Post"):
         serper_api_key = st.secrets["serper_api_key"]
         os.environ['SERPER_API_KEY'] = serper_api_key
         llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, api_key=openai_api_key)
-        search_tool = SerperDevTool()
+        serper_tool_top5 = SerperDevTool(n_results=2)
         scrape_tool = ScrapeWebsiteTool()
 
         with st.spinner("AI agents are crafting your LinkedIn post..."):
@@ -39,7 +39,7 @@ if st.button("Generate LinkedIn Post"):
                     "Your work is the basis for the Content Writer."
                 ),
                 allow_delegation=False,
-                tools=[search_tool, scrape_tool],
+                tools=[serper_tool_top5, scrape_tool],
                 verbose=True,
                 llm=llm
             )
@@ -54,7 +54,7 @@ if st.button("Generate LinkedIn Post"):
                     "You make it engaging, use bullet points, and end with a question to encourage comments. "
                     "Your post must be under 300 words. You are a LinkedIn content expert who can write viral posts."
                 ),
-                tools=[search_tool, scrape_tool],
+                tools=[serper_tool_top5, scrape_tool],
                 allow_delegation=False,
                 verbose=True,
                 llm=llm
