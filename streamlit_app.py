@@ -7,7 +7,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.title("🤖 PostPal: Your AI Social Content Buddy")
+st.title("🤖PostPal:Your AI Social Content Buddy")
 
 st.markdown("""
 Welcome to the AI Content Generation Suite! This application leverages the power of AI agentic workflows (using CrewAI) to help you generate content for various social media platforms and blogs.
