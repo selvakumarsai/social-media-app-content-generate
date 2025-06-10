@@ -25,7 +25,7 @@ if st.button("Generate Blog Post"):
         serper_api_key = st.secrets["serper_api_key"]
         os.environ['SERPER_API_KEY'] = serper_api_key
         llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=openai_api_key)
-        serper_tool_top5 = SerperDevTool(k=5)
+        serper_tool_top5 = SerperDevTool(n_results=2)
         scrape_tool = ScrapeWebsiteTool()
 
         with st.spinner("AI agents are crafting your blog post... This may take a moment."):
